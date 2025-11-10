@@ -552,7 +552,7 @@ p.icon-style.ctype22 {background-color:#8b324d;}
 .login_wrap:before {content:''; position:absolute; width:100%; height:100%; background:url(../images/layout/bg_login_min.png) no-repeat center center; opacity:0.7;}
 .login_box {position:relative; z-index:5; height:43rem; width:40rem}
 .login_box h1 {margin-bottom:4rem; text-align:center;}
-.login_box h1 .skt {opacity:.7}
+.login_box h1 .com {opacity:.7}
 .login_box h1 .logo {margin-top:var(--padding-small); margin-bottom:0.4rem;}
 .login_box h1 .fullname {font-size:var(--font-size); font-weight:400;}
 .login_box .login_frm {width:100%; margin-bottom:1rem}
@@ -570,13 +570,13 @@ p.icon-style.ctype22 {background-color:#8b324d;}
 #header h1 .logo {display:inline-flex; align-items:center; height:var(--height); }
 #header h1 .logo img {height:auto; width:68px}
 .select_project {position:relative; display:inline-flex; align-items:center; width:13rem; height:var(--height);}
-.tomars_onoff {position:relative; display:inline-flex; align-items:center; width:3rem; height:var(--height);}
-.tomars_onoff .btn_tomars {display:block; width:3rem; height:var(--height); background:url(../images/icon/ic_arrow.png) no-repeat center center / 11px 7px; font-size:0; transition:transform .3s;}
-.tomars_onoff ul {position:absolute; top:var(--height); right:0; width:11rem; padding:var(--padding-small) 0; visibility:hidden; opacity:0; border:1px solid var(--border-color); background:var(--bg-container); transition:opacity 0.3s;}
-.tomars_onoff li {display:block; padding:0.4rem 2rem; font-size:var(--font-medium); font-weight:400; cursor:pointer}
-.tomars_onoff li:hover {background:var(--color-point); color:var(--font-btnColor); }
-.tomars_onoff.active .btn_tomars {transform:rotate(180deg);}
-.tomars_onoff.active ul {visibility:visible; opacity:1;}
+.arkruz_onoff {position:relative; display:inline-flex; align-items:center; width:3rem; height:var(--height);}
+.arkruz_onoff .btn_arkruz {display:block; width:3rem; height:var(--height); background:url(../images/icon/ic_arrow.png) no-repeat center center / 11px 7px; font-size:0; transition:transform .3s;}
+.arkruz_onoff ul {position:absolute; top:var(--height); right:0; width:11rem; padding:var(--padding-small) 0; visibility:hidden; opacity:0; border:1px solid var(--border-color); background:var(--bg-container); transition:opacity 0.3s;}
+.arkruz_onoff li {display:block; padding:0.4rem 2rem; font-size:var(--font-medium); font-weight:400; cursor:pointer}
+.arkruz_onoff li:hover {background:var(--color-point); color:var(--font-btnColor); }
+.arkruz_onoff.active .btn_arkruz {transform:rotate(180deg);}
+.arkruz_onoff.active ul {visibility:visible; opacity:1;}
 
 .gnb {border:1px solid transparent; transition:all .3s; font-size:var(--font-medium); }
 .gnb > ul {display:flex}

@@ -928,7 +928,7 @@ ServerStatus = {
     SendCommand($this, uri, command, type) {
         if ($this.socket.stompClient === null) {
             console.error("The transmission channel is not activated.");
-            return _ShowErrorAfterLoading("SK TOMARS oAgent Connection Error!!");
+            return _ShowErrorAfterLoading("Arkruz oAgent Connection Error!!");
         }
 
         if (__DEBUG) {
