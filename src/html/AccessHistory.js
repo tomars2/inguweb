@@ -3,7 +3,7 @@
  */
 AccessHistory = {
 	vm: null,
-
+ 
 	//TODO query 변경 필요!! table 바뀔것!!(access_history => member_access_history)
 
 	Init(pageParam) {
