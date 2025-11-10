@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>SK TOMARS</title>
+	<link rel="icon" href="data:;base64,=">
+	<link rel="stylesheet" type="text/css" href="../css/common.css?v=1.0" />
+	<link rel="stylesheet" type="text/css" href="../css/layout.css?v=1.0" />
+	<link rel="stylesheet" type="text/css" href="../sweetalert/sweetalert.css?v=1.0" />
+	<link rel="stylesheet" type="text/css" href="../scripts/calendarLib/calendarLib.css?v=1.0" />
+	<link rel="stylesheet" type="text/css" href="../jqUI/jquery-ui-1.10.4.custom.css?v=1.0" />
+	<link rel="stylesheet" type="text/css" href="../jqGrid/ui.jqgrid.css?v=1.0" />
+	<link rel="stylesheet" type="text/css" href="../select2/select2.css?v=1.0" />
+	<link rel="stylesheet" type="text/css" href="../css/jquery.contextMenu.2.9.2.min.css?v=1.0" />
+	<link rel="stylesheet" type="text/css" href="../css/jquery.contextMenu.2.9.2.min.css.map?v=1.0" />
+	<link rel="stylesheet" type="text/css" href="../css/custom.css?v=1.0">
+</head>
+
+<body class="pagePanel">
+
+<div id="wrap">
+	<div id="master-top">
+		<header id="header">
+			<h1>
+				<span class="logo"><img src="../images/layout/logo.png" alt="SKT TOMARS"></span>
+				<span id="projectSelect" class="select_project" style="font-size: 1.3rem">
+					<select id="selProject"></select>
+				</span>
+<!--				<span class="tomars_onoff">-->
+<!--                    <button type="button" class="button-style btn_tomars">tomars start/stop</button>-->
+<!--                    <ul>-->
+<!--                        <li>전체 시작</li>-->
+<!--                        <li>전체 정지</li>-->
+<!--                    </ul>-->
+<!--                </span>-->
+			</h1>
+			<nav class="gnb">
+				<ul><!-- 상단 매뉴영역 --></ul>
+			</nav>
+			<div class="user">
+				<ul>
+					<li id="alert" class="notice">공지<em class="new" style="display:none;">0</em></li>
+					<li class="logout">로그아웃</li>
+					<li class="setting">설정</li>
+				</ul>
+				<p><span class="user_name"></span> <span class="user_time"></span></p>
+			</div>
+		</header>
+	</div>
+
+	<div id="container">
+		<h2 class="title">
+			<span></span>
+			<span class="location"></span>
+		</h2>
+
+		<div id="content"></div>
+	</div>
+</div>
+
+<script type="text/javascript" src="../scripts/LAB.min.js?v=1.0"></script>
+<script type="text/javascript">
+	var pageLoaderOption = {
+		pageLogic: [
+			"/html/PagePanel.js",
+		]
+	};
+</script>
+<script type="text/javascript" src="../scripts/common.js?v=1.0"></script>
+<script type="text/javascript">
+	function Application_Init() {
+		checkMember2();
+		
+		PagePanel.Init();
+		_ShowLoading("Loading...");
+
+		/*CheckMember(function(flag) {
+			_HideLoading(function() {
+				if (flag) {
+					PagePanel.Init();
+				}
+				else {
+					$("body").empty();
+
+					_ShowError("세션이 종료되었습니다. 로그인을 다시 해주시기 바랍니다.", function() {
+						Logout();
+					});
+				}
+			});
+		});*/
+	}
+</script>
+
+</body>
+</html>

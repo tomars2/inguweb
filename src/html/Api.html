@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+</head>
+
+<body>
+
+<table class="search">
+	<colgroup>
+		<col style="width:65px;" />
+		<col style="width:250px;">
+		<col style="width:90px;" />
+		<col style="width:250px;">
+		<col style="width:80px;" />
+		<col style="width:250px;">
+		<col style="width:80px;" />
+		<col style="width:250px;">
+<!--		<col style="width:80px;" />-->
+<!--		<col style="width:250px;">-->
+		<col>
+	</colgroup>
+	<tbody>
+		<tr>
+			<th>조회</th>
+
+			<td class="button">
+				<button type="button" class="button-style gray" @click="btnSearch">api 조회</button>
+			</td>
+			<td></td>
+
+		 </tr>
+		<tr>
+			<th>로더</th>
+			<td>
+				<select ref="selAction">
+					<option value="read">xml</option>
+					<option value="write">json</option>
+				</select>
+			</td>
+			<td colspan="6" class="button">
+				<button type="button" class="button-style gray" @click="btnSearch">버튼</button>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<div class="layout-weight-box">
+	<div id="grid-box" class="grid-box layout-weight" data-weight="100%">
+		<table id="grid"></table>
+		<div id="grid-pager"></div>
+	</div>
+</div>
+
+</body>
+</html>

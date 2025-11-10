@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+		  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<body>
+<div class="process_wrap">
+	<aside class="lnb_process" :class="{fold: view.isFold}">
+		<div style="display: flex">
+			<h3 class="title_small">PROCESS STATUS</h3>
+			<div style="margin-left: 45px;">
+				<button type="button" class="button-style blue" @click="reload">Polling</button>
+			</div>
+		</div>
+		<div :style="style.service" style="display:none;">
+			<select ref="service"></select>
+		</div>
+		<button type="button" class="btn_fold" @click="fold">접기</button>
+		<ul class="aside_tab">
+			<li @click="selectTabInSideBar" class="active">Flow-Group</li>
+			<li @click="selectTabInSideBar">Process-Type</li>
+		</ul>
+
+		<div class="tab_box active flowGroup" ref="flowGroupTree"> <!-- Tree -->
+			<h4 class="project">
+				<em class="state project" :class="setClassWithStatus('project', view.tree.flowGroup)" data-type="project" :data-projectId="projectId"></em>
+				<span>{{ view.tree.flowGroup.projectName }}</span>
+			</h4>
+			<ul v-for="server in view.tree.flowGroup.server" :key="server.serverId">
+				<li class="flowGroup server" @contextmenu="handleContextMenu($event)" @click.stop="foldInSideBar"
+				    :data-serverId="server.serverId"
+				    :data-serverName="server.serverName"
+				    :data-lsystemId="server.lsystemId">
+					<em class="state" :class="setClassWithStatus('server', server)" data-type="server"></em>
+					<span v-if="server.description === ''">{{server.serverName}}</span>
+					<span v-else>{{server.serverName}} ( {{ server.description }} )</span>
+					<ul v-for="flow in server.flow" :key="flow.flowId">
+						<li class="flowGroup flow" @contextmenu="handleContextMenu($event)" @click.stop="foldInSideBar"
+						    :data-serverId="server.serverId"
+						    :data-serverName="server.serverName"
+						    :data-flowId="flow.flowId"
+						    :data-flowGroupId="flow.flowGroupId"
+						    :data-flowGroupName="flow.flowGroupName"
+						    :data-lsystemId="server.lsystemId">
+							<em class="state" :class="setClassWithStatus('flow', flow)" data-type="flow"></em>
+							<span>{{flow.flowName}}</span>
+							<ul v-for="(process, index) in flow.process" :key="process.id">
+<!--								<li class="flowGroup process" @contextmenu="handleContextMenu($event)" @click.stop="foldInSideBar"
+								    :data-serverId="server.serverId"
+								    :data-serverName="server.serverName"
+									:data-flowId="flow.flowId"
+									:data-processId="process.id"
+									:data-processName="process.name"
+									:data-min="process.properties.instance.min"
+									:data-bpId="process.properties"
+									:data-flowGroupId="flow.flowGroupId"
+									:data-flowGroupName="flow.flowGroupName"
+									:data-lsystemId="server.lsystemId">-->
+								<li  class="flowGroup process" @contextmenu="handleContextMenu($event)" @click.stop="foldInSideBar"
+								    :data-serverId="server.serverId"
+								    :data-serverName="server.serverName"
+									:data-flowId="flow.flowId"
+									:data-processId="process.id"
+									:data-processName="process.name"
+									:data-min="process.properties.instance.min"
+									:data-properties="JSON.stringify(process.properties)">
+									<em class="state" :class="setClassWithStatus('process', process)" data-type="process" :data-min="process.properties.instance.min"></em>
+									<span>{{process.name}}</span>
+									<ul class="depth_last" v-for="instance in process.properties.instance.instance" :key="instance">
+										<li class="flowGroup instance active" @contextmenu="handleContextMenu($event)" @click.stop="foldInSideBar"
+											:data-serverId="server.serverId"
+											:data-serverName="server.serverName"
+											:data-flowId="flow.flowId"
+											:data-flowGroupId="flow.flowGroupId"
+											:data-flowGroupName="flow.flowGroupName"
+											:data-processId="process.id"
+											:data-processName="process.name"
+											:data-instanceName="instance.name"
+											:data-properties="JSON.stringify(process.properties)">
+											<em class="state" :class="setClassWithStatus('instance', instance)" data-type="instance"></em>
+											<span v-if="instance.status === ''">{{ instance.name }} </span>
+											<span v-else>{{ instance.name }} ( {{ instance.description }} )</span>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+
+		<div class="tab_box" ref="processTypeTree"> <!-- Process Type -->
+			<h4>
+				<em class="state" :class="setClassWithStatus('processGroup project', view.tree.processType)"></em>
+				<span>{{ view.tree.flowGroup.projectName }}</span>
+			</h4>
+			<ul ref="processTypUl">
+				<li ref="processTypeList" @click="foldInSideBar" class="processType type" v-for="(processType, key) in view.tree.processType" :key="key" v-if="key !== 'status'">
+					<em class="state" :class="setClassWithStatus('processGroup processType', processType)"></em>
+					<span>{{ processType.label }}</span>
+					<ul v-for="process in processType.process">
+						<li class="processType process"
+						    @click.stop="foldInSideBar"
+						    :data-bpId="process.bpid"
+						    :data-serverName="process.serverName"
+						    :data-flowId="process.flowId"
+						    :data-min="process.min"
+						    :data-flowGroupId="process.flowGroupId"
+						    :data-serverId="process.serverId"
+						    :data-processName="process.processName">
+							<em class="state" :class="setClassWithStatus('processGroup process', process)"></em>
+							<span>{{ process.name }}</span>
+							<ul v-for="instance in process.instance" :key="instance" class="depth_last">
+								<li class="processType instance"
+								    :data-serverId="process.serverId"
+								    :data-serverName="process.serverName"
+								    :data-flowId="process.flowId"
+								    :data-processName="process.processName"
+								    :data-bpId="instance.bpId"
+								    :data-flowGroupId="process.flowGroupId"
+								    :data-instanceId="instance.instanceId">
+									<em class="state" :class="setClassWithStatus('processGroup instance', instance)"></em>
+									<span v-if="instance.status === ''">{{ instance.instanceId }} </span>
+									<span v-else>{{ instance.instanceId }} ( {{ instance.description }} )</span>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</aside>
+
+	<section class="page-panel process_con">
+		<ul class="tab">
+			<li @click="selectTab('Block', $event)" class="active">Block</li>
+			<li @click="selectTab('Diagram', $event)">Diagram</li>
+			<li @click="selectTab('Grid', $event)">List(Grid)</li>
+		</ul>
+
+		<div class="tab_panel active">
+			<table class="search">
+				<colgroup>
+					<col v-if="!view.isCheckedFlowGroup" style="width:50px;"/>
+					<col v-if="view.isCheckedFlowGroup" style="width:75px;"/>
+					<col>
+					<col style="width:80px;"/>
+					<col>
+					<col style="width:130px;"/>
+					<col>
+					<col style="width:200px;"/>
+					<col/>
+					<col style="width:105px"/>
+				</colgroup>
+				<tbody>
+				<tr>
+					<th v-show="!view.isCheckedFlowGroup">Server</th>
+					<td v-show="!view.isCheckedFlowGroup">
+						<select ref="server"></select>
+					</td>
+					<th v-show="!view.isCheckedFlowGroup">Flow</th>
+					<td v-show="!view.isCheckedFlowGroup">
+						<select ref="flow"></select>
+					</td>
+					<th v-show="view.isCheckedFlowGroup" :style="style.searchNav.florGroupTextStyle">Flow Group</th>
+					<td v-show="view.isCheckedFlowGroup">
+						<select ref="flowGroup"></select>
+					</td>
+					<td v-show="view.isCheckedFlowGroup"></td>
+					<td v-show="view.isCheckedFlowGroup"></td>
+					<td></td>
+					<td></td>
+					<td class="button" colspan="3">
+						<div :style="style.searchNav.target">
+							<div :style="style.searchNav.flowGroupCheckBox" v-show="view.tabName === 'Block'">
+								<label :style="style.searchNav.flowGroupCheckBoxLabel">Flow Group Search :</label>
+								<input type="checkbox" v-model="view.isCheckedFlowGroup">
+							</div>
+							<button type="button" class="button-style blue" @click="search">조 회</button>
+							<button v-show="view.tabName === 'Grid'" type="button" class="button-style point" @click="excel">엑셀 다운로드</button>
+						</div>
+					</td>
+				</tr>
+				</tbody>
+			</table>
+			<div ref="block_box" v-show="view.tabName === 'Block'" class="block_wrap"> <!-- Block -->
+				<article class="block_item" v-for="(content, i) in view.blockRow" :data-flowId="content.flowId" :data-serverId="content.serverId">
+					<ol>
+						<li class="service">
+							<span>{{ content.serverName }}</span>
+						</li>
+						<li class="flow">
+							<span class="flow-name">{{ content.flowName }}</span>
+						</li>
+						<li class="process type" v-for="(item , i) in content.processList" :data-bpId="item.bpId" :data-instanceCnt="item.instanceCnt">
+							<span v-if="item.name === undefined || item.name === ''" :class="setClassWithStatus('block instance', item)">{{ item.type }}({{ item.min }})</span>
+							<span v-else :class="setClassWithStatus('block instance', item)">{{ item.name }}({{ item.min }})</span>
+						</li>
+					</ol>
+				</article>
+			</div>
+
+			<div v-show="view.tabName === 'Diagram'" class="diagram_wrap">  <!-- Diagram -->
+				<article class="canvas row flow_designer" id="canvas" :style="style.canvas"></article>
+			</div>
+
+			<div v-show="view.tabName === 'Grid'" class="jqgrid_wrap" :style="style.hide"> <!-- List(Grid) -->
+				<div class="layout-weight-box" style="height: 100%;">
+					<div id="grid-box" class="grid-box layout-weight" data-weight="100%" style="height: 100%;">
+						<table id="grid" style="height: 100%;"></table>
+						<div id="grid-pager"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>
+</body>
+</html>

@@ -1,0 +1,10 @@
+/* Process > Diagram > ProcessChangeStatusPOP > Table*/
+table.table.process_table th{height: initial;border-bottom:1px solid var(--tbl-tdBorder);} /* 첫번째 Th, td 길이 조정*/
+table.table.process_table tr:nth-child(2):hover {background: initial} /* 두번째 tr에 hover 시 background 지정 방지 */
+
+.hide {
+    display: none;
+}
+
+.buttonArea {display: flex; justify-content: center; margin-top: 10px;}
+.konvaPlaceSize{width: 2000px !important; height: 2000px !important;}

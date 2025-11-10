@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+</head>
+
+<body>
+
+<table class="search">
+	<colgroup>
+		<col style="width:65px;" />
+		<col style="width:250px;">
+		<col style="width:90px;" />
+		<col style="width:250px;">
+		<col style="width:80px;" />
+		<col style="width:250px;">
+		<col style="width:80px;" />
+		<col style="width:250px;">
+<!--		<col style="width:80px;" />-->
+<!--		<col style="width:250px;">-->
+		<col>
+	</colgroup>
+	<tbody>
+		<tr>
+			<th>접속 일시</th>
+			<td class="twin">
+				<input type="text" class="input-style date" readonly="readonly" v-model="startDt" @click="showCalendar($event, 'startDt')" />
+				<input type="text" class="input-style date" readonly="readonly" v-model="endDt" @click="showCalendar($event, 'endDt')" />
+			</td>
+			<th>메뉴</th>
+			<td><select ref="selMenu"></select></td>
+			<th>사용자</th>
+			<td><input type="text" class="input-style" v-model.trim="userName"/></td>
+			<th>행위</th>
+			<td>
+				<select ref="selAction">
+					<option value="R">읽기</option>
+					<option value="U">수정</option>
+					<option value="D">삭제</option>
+					<option value="C">삽입</option>
+					<option value="G">엑셀다운</option>
+				</select>
+			</td>
+			<td class="button">
+				<button type="button" class="button-style gray" @click="btnSearch">조회</button>
+				<button type="button" class="button-style blue" @click="btnExcelDown">엑셀 다운로드</button>
+			</td>
+		<!-- </tr>
+		<tr>
+			<th>행위</th>
+			<td>
+				<select ref="selAction">
+					<option value="read">읽기</option>
+					<option value="write">쓰기</option>
+				</select>
+			</td>
+			<td colspan="6" class="button">
+				<button type="button" class="button-style gray" @click="btnSearch">조회</button>
+			</td>
+		</tr> -->
+	</tbody>
+</table>
+
+<div class="layout-weight-box">
+	<div id="grid-box" class="grid-box layout-weight" data-weight="100%">
+		<table id="grid"></table>
+		<div id="grid-pager"></div>
+	</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+    "name": "flowengine.web",
+    "version": "1.0.0",
+    "description": "<!-- @format -->",
+    "scripts": {
+        "start": "http-server ./src -c-1 -p 3000"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://git-codecommit.ap-northeast-2.amazonaws.com/v1/repos/flowengine.web"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "http-server": "^14.1.0"
+    }
+}

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+</head>
+
+<body>
+
+	<div style="width:600px;">
+		<div class="sub-title">
+			<h4>Flow 정보</h4>
+			<div class="button">
+				<button type="button" class="button-style" v-if="isModify" @click="btnModify">수정</button>
+				<button type="button" class="button-style blue" v-else @click="btnSave">저장</button>
+				<button type="button" class="button-style red" v-if="isModify" @click="btnDelete">삭제</button>
+			</div>
+		</div>
+
+		<table class="input-style" style="width: 100%;">
+			<colgroup>
+				<col style="width:110px;" />
+				<col>
+				<col style="width:110px;" />
+				<col>
+			</colgroup>
+			<tbody>
+				<tr>
+					<th class="req">* Flow 명</th>
+					<td colspan="3">
+						<input type="text" class="text" placeholder="Flow Name" v-model.trim="flowNm">
+					</td>
+				</tr>
+				<tr class="auto">
+					<th>Flow 개요</th>
+					<td colspan="3">
+						<textarea rows="4" class="text" placeholder="Description" v-model.trim="description"></textarea>
+					</td>
+				</tr>
+
+				<tr colspan="3">
+					<th>Group ID</th>
+					<td colspan="3">
+						<input type="number" class="text" placeholder="Group id" v-model.trim="groupId">
+					</td>
+				</tr>
+				<tr colspan="3">
+					<th>Group 명</th>
+					<td colspan="3">
+						<input type="text" class="text" placeholder="Group name" v-model.trim="groupName">
+					</td>
+				</tr>
+				<tr>
+					<th>Primary<br>Server 명</th>
+					<td>
+						<select ref="selPrimaryServer"></select>
+					</td>
+					<th>Secondary<br>Server 명</th>
+					<td>
+						<select ref="sel2ndServer"></select>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<template v-show="isModify">
+			<div v-if="isModify" class="sub-title">
+				<h4>Version</h4>
+			</div>
+
+			<div id="grid-box" class="grid-box" :style="gridStyle">
+				<table id="grid"></table>
+				<div id="grid-pager"></div>
+			</div>
+		</template>
+
+	</div>
+
+</body>
+
+</html>

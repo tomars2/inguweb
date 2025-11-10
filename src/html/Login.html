@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>SK TOMARS</title>
+	<link rel="icon" href="data:;base64,=">
+	<link rel="stylesheet" type="text/css" href="../css/common.css?v=1.0" />
+	<link rel="stylesheet" type="text/css" href="../css/layout.css?v=1.0" />
+	<link rel="stylesheet" type="text/css" href="../sweetalert/sweetalert.css?v=1.0" />
+	<link rel="stylesheet" type="text/css" href="../select2/select2.css?v=1.0" />
+</head>
+
+<body>
+
+<div class="login_wrap">
+	<div class="login_box">
+		<h1>
+			<p class="skt"><img src="../images/layout/logo_skt.png" alt="SK telecome"></p>
+			<p class="logo"><img src="../images/layout/logo.png" alt="SKT TOMARS"></p>
+			<p class="fullname">Total Operating Mediation & Rating Solution</p>
+		</h1>
+		<form id="login-box" class="form login_frm" method="post" action="" onsubmit="return false;">
+			<div class="input-box">
+				<input type="text" placeholder="아이디" v-model.trim="memberId" ref="memberId" />
+				<input type="password" placeholder="비밀번호" v-model.trim="memberPw" ref="memberPw" />
+
+				<label class="checkbox">
+					<input type="checkbox" v-model="saveID" true-value="Y" false-value="N" />
+					<span>ID Save</span>
+				</label>
+
+<!--				<span class="sub-button">-->
+<!--					<a href="javascript:none()" @click="join">Register</a>-->
+<!--				</span>-->
+				<p class="float-clear"></p>
+
+				<div class="button">
+					<button type="submit" @click="login">LOGIN</button>
+					<div class="float-clear"></div>
+				</div>
+			</div>
+		</form>
+		<footer>Copyright ⓒ 2023 by SK Telecome. All rights reserved.</footer>
+	</div>
+</div>
+
+<script type="text/javascript" src="../scripts/LAB.min.js?v=1.0"></script>
+<script type="text/javascript">
+	var pageLoaderOption = {
+		pageLogic: ["/html/Login.js"]
+	};
+</script>
+<script type="text/javascript" src="../scripts/common.js?v=1.0"></script>
+<script type="text/javascript">
+	function Application_Init() {
+		Login.Init();
+	}
+</script>
+
+</body>
+
+</html>

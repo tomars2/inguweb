@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+</head>
+<body>
+
+<table class="search">
+	<colgroup>
+		<col style="width:140px;"/>
+		<col>
+		<col style="width:80px;"/>
+		<col>
+		<col style="width:80px;"/>
+		<col>
+		<col style="width:80px;"/>
+		<col>
+		<col style="width:80px;"/>
+		<col>
+		<col style="width:400px;"/>
+		<col />
+		<col style="width:10px"/>
+	</colgroup>
+	<tbody>
+	<tr>
+<!--		<th><em class="caution">*</em>서비스명</th>-->
+<!--		<td>-->
+<!--			<select ref="selService"></select>-->
+<!--		</td>-->
+		<th><em class="caution">*</em>서버명</th>
+		<td>
+			<select ref="selServer"></select>
+		</td>
+		<th><em class="caution">*</em>Flow명</th>
+		<td>
+			<select ref="selFlow"></select>
+		</td>
+		<th>Version</th>
+		<td>
+			<select ref="selVersion"></select>
+		</td>
+		<th>Deployed</th>
+		<td>
+			<input type="text" class="input-style" v-model.trim="deployedVersion"/>
+		</td>
+		<td colspan="3" class="button">
+			<button type="button" class="button-style" @click="btnSearch">조회</button>
+			<button type="button" class="button-style point" @click="btnClear">신규</button>
+			<button type="button" class="button-style blue" @click="btnSave">저장</button>
+			<button type="button" class="button-style gray" @click="btnAddVersion">버전생성</button>
+			<button type="button" class="button-style" @click="btnAddMappingTable" >매핑테이블 생성</button>
+			<button type="button" class="button-style" @click="btnGetFlowDesign">불러오기</button>
+		</td>
+	</tr>
+	</tbody>
+</table>
+<div class="row flow_designer">
+	<div class="process_icon">
+		<ul>
+			<li v-for="(item, i) in engineProcess">
+				<div class="icon_item" draggable="true" @dragstart="setProperties($event, item)">
+<!--				<div v-if="item.group !== 'MessageStore'" class="icon_item" draggable="true" @dragstart="setProperties($event, item.label, item.properties, item['channel-in-allowed'], item['channel-out-allowed'])">-->
+					<figure><img :src=`../images/icon/ic_process_${item.label.toLowerCase()}.png` :alt="item.label"></figure>
+					<figcaption>{{item.label}}</figcaption>
+				</div>
+			</li>
+			<li>
+				<div class="icon_item" draggable="true" @dragstart="setProperties($event, 'S')">
+					<figure><img src="../images/icon/ic_process_start.png"></figure>
+					<figcaption>S</figcaption>
+				</div>
+			</li>
+			<li>
+				<div class="icon_item" draggable="true" @dragstart="setProperties($event, 'E')">
+					<figure><img src="../images/icon/ic_process_end.png"></figure>
+					<figcaption>E</figcaption>
+				</div>
+			</li>
+		</ul>
+	</div>
+
+	<div style="overflow: auto; width: 100%; height: 100%; display: block;">
+		<article class="canvas konvaPlaceSize" id="flowDesigner"></article>
+	</div>
+
+	<aside class="lnb_flowSetting">
+		<ul class="aside_tab">
+			<li :class="{ active: propTabIndex === 0 }" @click="togglePropTab(0)" data-tab="flowDefault">기본</li>
+			<li :class="{ active: propTabIndex === 1 }" @click="togglePropTab(1)" data-tab="flowSetting">설정</li>
+		</ul>
+		<div class="tab_box" :class="{ active: propTabIndex === 0 }">
+			<h4>{{processName}}</h4>
+			<div class="row">
+				<p class="tit">항목</p>
+				<p class="tit">설정 값</p>
+			</div>
+			<div class="row" v-for="item in componentDetailArr">
+				<!--<label><em class="caution" v-if="item.key==='name'">*</em>{{item.key}}</label>-->
+				<label style="word-break: break-word;"><em class="caution" v-if="item.key==='name'">*</em>{{item.key}}</label>
+<!--				<input type="text" @keydown.space.prevent v-model.trim="item.value" :disabled="item.key === 'type'" @change="changeBasicInfo(processName, item.key, item.value, item.id)"/>-->
+				<input type="text" @keydown.space.prevent v-model.trim="item.value" :disabled="item.key === 'type'" @change="changeBasicInfo(processName, item.key, item.value, item.id)"/>
+			</div>
+		</div>
+		<div class="tab_box" :class="{ active: propTabIndex === 1 }">
+<!--			<h4>{{processName}} <button type="button" class="add">그룹추가</button></h4>-->
+			<h4>{{processName}}</h4>
+			<div class="row">
+				<p class="tit">항목</p>
+				<p class="tit">설정 값</p>
+			</div>
+			<div class="list_wrap" v-if="existProperties">
+				<div class="group" v-for="(item, i) in propertiesGroupArr">
+					<h5 class="group_tit" v-if="item.groupName !== ''" ref="groupName">{{item.groupName}}</h5>
+					<h5 class="group_tit" v-else>&nbsp;</h5>
+					<div class="row" v-for="(subItem, j) in item.valuesArr" ref="table">
+						<label style="word-break: break-word;"><em class="caution" v-if="subItem.required">*</em>{{subItem.subKey}}</label>
+<!--						TODO bpid일때 selectbox넣기!!-->
+<!--
+						<input v-if="subItem.subKey !== 'bpid' && subItem.subKey !== 'queueId'" :type="subItem.inputType" v-model.trim="subItem.defaultValue" :placeholder="subItem.type" @change="changeProperties(processName, item.groupName, subItem.subKey, subItem.defaultValue, j)">
+						<select v-else-if="subItem.subKey === 'bpid'" ref="selBpid"></select>
+						<select v-else-if="subItem.subKey === 'queueId'" ref="selTopicLag"></select>
+-->
+						<input :type="subItem.inputType" v-model.trim="subItem.defaultValue" :placeholder="subItem.type" @change="changeProperties(processName, item.groupName, subItem.subKey, subItem.defaultValue, j)">
+						
+					</div>
+				</div>
+			</div>
+			<div v-else>
+				<h3 style="text-align: center">No Properties.</h3>
+			</div>
+
+		</div>
+	</aside>
+</div>
+
+</body>
+</html>

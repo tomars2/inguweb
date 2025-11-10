@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+</head>
+
+<body>
+
+	<div class="title">
+		<!--		<h3>Flow<em>Management > Flow</em></h3>-->
+	</div>
+
+	<table class="search">
+		<colgroup>
+			<col style="width:80px;" />
+			<col>
+			<col style="width:80px;" />
+			<col>
+			<col style="width:80px;" />
+			<col>
+			<col style="width:80px;" />
+			<col>
+		</colgroup>
+		<tbody>
+			<tr>
+				<th>서버명</th>
+				<td>
+					<select ref="selServer"></select>
+				</td>
+				<th>Flow명</th>
+				<td>
+					<select ref="selFlow"></select>
+				</td>
+				<th>Group명</th>
+				<td>
+					<input type="text" class="input-style" v-model.trim="groupName" />
+				</td>
+				<th>Status</th>
+				<td>
+					<select ref="selStatus">
+						<option value="">All</option>
+						<option value="01">Enabled</option>
+						<option value="02">Disabled</option>
+					</select>
+				</td>
+				<td class="button">
+					<button type="button" class="button-style gray" @click="btnSearch">조회</button>
+					<button type="button" class="button-style blue" @click="btnNew">신규</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<div class="layout-weight-box">
+		<div id="grid-box" class="grid-box layout-weight" data-weight="100%">
+			<table id="grid"></table>
+			<div id="grid-pager"></div>
+		</div>
+	</div>
+
+</body>
+
+</html>

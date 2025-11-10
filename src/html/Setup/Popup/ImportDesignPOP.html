@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+</head>
+<body>
+
+<div style="width:inherit;">
+	<div class="sub-title">
+		<h4>Flow Design</h4>
+		<div class="button">
+			<button type="button" class="button-style point" @click="btnImport">적용하기</button>
+		</div>
+	</div>
+	
+	<table class="input-style" style="width: 100%;">
+		<colgroup>
+			<col style="width:80px;" />
+			<col>
+			<col style="width:80px;" />
+			<col>
+			<col style="width:80px;" />
+			<col>
+		</colgroup>
+		<tbody>
+		<tr>
+			<th class="req">* 서버명</th>
+			<td>
+				<select ref="selServer"></select>
+			</td>
+			<th class="req">* Flow명</th>
+			<td>
+				<select ref="selFlow"></select>
+			</td>
+			<th class="req">* Version</th>
+			<td>
+				<select ref="selVersion"></select>
+			</td>
+		</tr>
+		</tbody>
+	</table>
+	
+	<div style="overflow: auto; width: 100%; height: 80vh; display: block;">
+		<article class="canvas konvaPlaceSize" id="flowDesigner"></article>
+	</div>
+<!--	<article class="canvas" id="flowDesigner" style="height: 80vh;"></article>-->
+</div>
+
+</body>
+</html>

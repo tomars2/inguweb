@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+</head>
+
+<body>
+
+<template>
+	<div>
+		<table class="input-style" style="width: 100%;">
+			<colgroup>
+				<col style="width:50px;" />
+				<col />
+				<col />
+				<col />
+			</colgroup>
+			<thead>
+			<tr>
+				<th style="border-right: 1px #6a7276"></th>
+				<th>Field</th>
+				<th>Rename</th>
+				<th>Function</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr v-for="(row, index) in rows" :key="index">
+				<td><button @click="addRow" class="button-style" style="border: none;border-radius: 10px; padding-left: 10px; padding-right: 10px; text-align: center;">+</button></td>
+				<td><input type="text" v-model="row.field" placeholder="Field" /></td>
+				<td><input type="text" v-model="row.rename" placeholder="To" /></td>
+				<td><input type="text" v-model="row.function" placeholder="Convert" /></td>
+			</tr>
+			</tbody>
+		</table>
+		<button @click="addRow" class="button-style">Add Row</button>
+		<button @click="save" class="button-style">Save</button>
+		<button @click="testshow" class="button-style">test</button>
+	</div>
+</template>
+
+</body>
+
+</html>
