@@ -8,7 +8,7 @@ Flow = {
 		this.SetFlowSelectBox();
 		this.SetStatusSelectBox();
 	},
-
+ 
 	OnResume() {
 	},
 
