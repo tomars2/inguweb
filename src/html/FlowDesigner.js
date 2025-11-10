@@ -6,7 +6,7 @@ FlowDesigner = {
 
 	// 가운데 디자이너 영역
 	flowDesigner	: null,
-
+ 
 	// Data
 	connectors		: null,
 	process			: null,
