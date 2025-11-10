@@ -11,7 +11,7 @@ const GetInQueryPostData = (queryType, tag, param) => {
         param = {};
     }
 
-
+  
     
     return {
         query: queryType,
