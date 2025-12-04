@@ -5,7 +5,7 @@ ImportDesignPOP = {
 	engineData: null,
 
 	connectors: null,
-	process: null,
+	process: null, 
 	wholeDesignObj: {},
 	inOutInfo: { connectors: [] },
 	startEnds: null,
