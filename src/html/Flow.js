@@ -4,7 +4,7 @@ Flow = {
 
 	Init(pageParam) {
 		this.SetControl();
-		this.SetServerSelectBox();
+		this.SetServerSelectBox(); 
 		this.SetFlowSelectBox();
 		this.SetStatusSelectBox();
 	},
