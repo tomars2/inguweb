@@ -19,7 +19,7 @@ const GetInQueryPostData = (queryType, tag, param) => {
         param: JSON.stringify(param),
     };
 };
-
+ 
 const CheckStatus = (status) => {
     const rtnObj = {
         status: '',
