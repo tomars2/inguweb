@@ -40,7 +40,7 @@ function getCodeList(queryType, tag, param, callback) {
 }
 
 /**
- * 공통코드
+ * 공통코드 
  * @param tag
  */
 function CommCodeLocal(tag, param) {
