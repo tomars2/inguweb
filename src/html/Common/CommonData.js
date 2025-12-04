@@ -119,7 +119,7 @@ var commCode = new CommCodeLocal("getCommCodeList");
 /**
  * common_code table 이외
  * @param queryType
- * @param tag
+ * @param tag 
  * @param param
  */
 function CommListLocal(queryType, tag, param) {
