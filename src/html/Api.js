@@ -14,7 +14,7 @@ Api = {
                     oThis.Getapis();
                 },
             }
-        });
+        }); 
 
     },
     Getapis($this) {
