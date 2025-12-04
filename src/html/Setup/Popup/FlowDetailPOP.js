@@ -8,7 +8,7 @@ FlowDetailPOP = {
 
 	SetControl() {
 		const oThis = this;
-
+ 
 		this.vm = new Vue({
 			el: "#" + this.panelID,
 			data: () => {
