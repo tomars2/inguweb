@@ -1,7 +1,7 @@
 const GetInQueryPostData = (queryType, tag, param) => {
 	if (!/^[A-Za-z0-9.]+$/.test(queryType)) {
 		queryType = "";
-	}
+	} 
 
 	if (!/^[A-Za-z0-9_\-]+$/.test(tag)) {
 		tag = "";
