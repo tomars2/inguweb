@@ -2,7 +2,7 @@
  * TODO 브라우저 호환성으로 ES5 형식으로 작성해야 함 
  */
 Login = {
-	vm: null,
+	vm: null, 
 
 	Init: function(pageParam) {
 		this.SetControl();
