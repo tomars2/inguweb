@@ -15,7 +15,7 @@ FlowDetailPOP = {
 				return {
 					isModify: false,
 					flowNm: "",
-					flowId: "",
+					flowId: "", 
 					description: "",
 					groupName: "",
 					groupId: "",
