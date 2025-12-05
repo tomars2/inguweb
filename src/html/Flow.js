@@ -78,7 +78,7 @@ Flow = {
 	/**
 	 *  Flow 목록 셋팅
 	 */ 
-	SetFlowSelectBox(serverId, projectId) {
+	SetFlowSelectBox(serverId, projectId) { 
 		const $selFlow = $(this.vm.$refs["selFlow"]);
 		$selFlow.off();
 		let commProcessFlow = new CommListLocal("getFlowByServer", "commonData", { serverId: serverId, projectId: projectId });
