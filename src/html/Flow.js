@@ -119,7 +119,7 @@ Flow = {
 		$selStatus.on("select2:clear", (e) => {
 			this.vm.status = "";
 		});
-	},
+	}, 
 
 	GridInit() {
 		let oThis = this;
