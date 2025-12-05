@@ -1016,7 +1016,7 @@ ServerStatus = {
 
                         oThis.ChangeStatus($this, name, command);
                     }
-
+ 
                     if (command !== null) {
                         if (command.range === 'processor' || command.range === 'instance') {
                             lazyPolling();
