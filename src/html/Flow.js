@@ -10,7 +10,7 @@ Flow = {
 	},
  
 	OnResume() {
-	},
+	}, 
 
 	OnDisappear() {
 	},
