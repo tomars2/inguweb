@@ -242,7 +242,7 @@ var commAlarmLevelSelectBox = new CommListLocal("getAlarmLevel", "commonData", {
 var commAlarmStatusSelectBox = new CommListLocal("getAlarmStatus", "commonData", {});
 
 /**
- * flow(전체_server와 관련X) selectBox
+ * flow(전체_server와 관련X) selectBox 
  */
 var commAllFlowsSelectBox = new CommListLocal("getCommAllFlows", "commonData", {});
 
