@@ -218,7 +218,7 @@ console.log(this.projectId);
 		});
 	},
 
-	GetFlowData() {
+	GetFlowData() { 
 		let param = {
 			projectId: this.projectId,
 			serverId: "",
