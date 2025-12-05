@@ -57,7 +57,7 @@ FlowDesigner = {
 					, serverId  : ""    // 검색영역 - Server
 					, flowId	: ""	// 검색영역 - Flow
 					, versionId	: ""	// 검색영역 - Version
-					, deployedVersion: "" // 검색영역 - Deployed
+					, deployedVersion: "" // 검색영역 - Deployed 
 
 					, existProperties   : true
 					, processName       : ""    // 설정창에 표시할 프로세스명
