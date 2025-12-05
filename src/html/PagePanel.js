@@ -156,7 +156,7 @@ PagePanel = {
 				
 				// 서브메뉴 최대 높이 지정
 				// ------------------------------
-				var menuBoxHeight = 0;
+				var menuBoxHeight = 0; 
 				
 				$menu.find("> li > ul").each(function(index, element) {
 					var $el = $(element);
