@@ -77,7 +77,7 @@ const CheckStatus = (status) => {
 
     return rtnObj;
 };
-
+ 
 const AdvancedPolling = (data) => {
     const {flowGroup, processType, projectId, pollingSecond, rows, __ServerURL, __Token, blockData} = data;
     const checkStatus = (target, parent) => {
