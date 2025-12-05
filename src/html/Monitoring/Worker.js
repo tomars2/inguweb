@@ -103,7 +103,7 @@ const AdvancedPolling = (data) => {
         } else if (child.status === 'stop') {
             target.stop++;
         }
-    };
+    }; 
     const getServerStatus = (callback) => {
         const xhr = new XMLHttpRequest();
 
