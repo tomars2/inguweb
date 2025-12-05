@@ -227,7 +227,7 @@ var commProcessingLevelSelectBox = new CommListLocal("getCommProcessingLevels", 
 var commBpidSelectBox = new CommListLocal("getCommBpid", "commonData", {});
 
 /**
- * alarmType selectBox
+ * alarmType selectBox 
  */
 var commAlarmTypeSelectBox = new CommListLocal("getAlarmType", "commonData", {});
 
