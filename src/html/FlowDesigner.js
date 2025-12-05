@@ -4,7 +4,7 @@
 FlowDesigner = {
 	vm: null,
 
-	// 가운데 디자이너 영역
+	// 가운데 디자이너 영역 
 	flowDesigner	: null,
  
 	// Data
