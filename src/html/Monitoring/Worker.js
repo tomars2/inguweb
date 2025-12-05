@@ -90,7 +90,7 @@ const AdvancedPolling = (data) => {
             parent.status = 'stop';
         } else {
             parent.waiting = 'waiting';
-        } 
+        }  
     };
 
     const countStatus = (target, child) => {
