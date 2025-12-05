@@ -182,7 +182,7 @@ CommListLocal.prototype.make = function(element) {
 /* ------------------------------ */
 
 /**
- * menu selectBox
+ * menu selectBox 
  */
 var commMenuSelectBox = new CommListLocal("getCommMenuList", "commonData", {});
 
