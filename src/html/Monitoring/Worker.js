@@ -146,7 +146,7 @@ const AdvancedPolling = (data) => {
         };
 
         xhr.send(Object.entries(GetInQueryPostData('serverStatus', 'getServerStatus', {})).map(e => e.join('=')).join('&'));
-    };
+    }; 
 
     const getBpStatus = () => {
         const xhr = new XMLHttpRequest();
