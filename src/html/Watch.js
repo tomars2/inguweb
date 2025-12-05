@@ -47,7 +47,7 @@ const ajax = (method, url, tag, queryName, token, param, callback, errorCallback
 				throw new Error('서버와의 통신이 실패하였습니다.');
 			}
 		};
-
+ 
 		xhr.send(Object.entries(GetInQueryPostData(tag, queryName, param)).map(e => e.join('=')).join('&'));
 	} catch (e) {
 		errorCallback(e);
