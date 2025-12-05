@@ -8,7 +8,7 @@ ImportDesignPOP = {
 	process: null, 
 	wholeDesignObj: {},
 	inOutInfo: { connectors: [] },
-	startEnds: null,
+	startEnds: null, 
 
 	Init(pageParam) {
 		this.engineData = this.getParam("engineData", "");
