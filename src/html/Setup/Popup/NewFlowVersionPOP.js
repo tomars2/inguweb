@@ -1,5 +1,5 @@
 /*
- * 파라메터 가져오기
+ * 파라메터 가져오기 
  * const test = this.getParam("test", "");
  *
  * 호출시 선언된 Callback 가져오기
