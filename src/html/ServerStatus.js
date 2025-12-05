@@ -1088,7 +1088,7 @@ ServerStatus = {
                     }
                 },
             },
-            'status': {
+            'status': { 
                 name: 'Status',
                 disabled() {
                     let rtnFlag = false;
