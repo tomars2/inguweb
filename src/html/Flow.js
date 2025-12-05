@@ -238,7 +238,7 @@ console.log(this.projectId);
 		}).trigger("reloadGrid");
 	},
 
-	ShowPopup(rowid) {
+	ShowPopup(rowid) { 
 		let param = {};
 		let title = "신규 Flow";
 
