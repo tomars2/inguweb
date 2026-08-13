@@ -6,7 +6,7 @@
  */
 var __ServerNotConnectMSG = "서버 연결 대기 시간이 초과되었습니다.";
 var __ServerURL = "http://" + location.hostname +":8080";
-var __DEBUG = false;
+var __DEBUG = false; 
 
 jQuery.support.cors = true; 
 
