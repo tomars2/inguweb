@@ -10,7 +10,7 @@ var __DEBUG = false;
 
 jQuery.support.cors = true;
 
-/**
+/** 
  * 회원확인
  */
 var Global = {
