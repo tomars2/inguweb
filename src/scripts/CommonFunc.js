@@ -2,7 +2,7 @@
  * TODO 브라우저 호환성으로 ES5 형식으로 작성해야 함
  */  
 /**
- * 기본상수 
+ * 기본상수  
  */
 var __ServerNotConnectMSG = "서버 연결 대기 시간이 초과되었습니다.";
 var __ServerURL = "http://" + location.hostname +":8080";
